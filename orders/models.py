@@ -21,3 +21,12 @@ class Coupon(models.Model):
             self.valid_from <=today <= self.valid_until
 
         ) 
+
+from django.db import models
+
+class orderStatus(models.Model)
+    name = models.CharField(max_length=50, unique=True)
+
+
+    def __str__(self):
+        return self.name
