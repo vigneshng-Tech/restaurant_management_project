@@ -24,3 +24,11 @@ def calculate_tip_amount(order_total * tip_percentage):
     """
     tip_amount = order_total * (tip_percentage /100)
     return round(tip_amount, 2)
+
+from django.db.models import sum
+from .models import order
+
+def get_daily_sales_total(date):
+    orders = Order.objects.filter(created_at__date=date)
+    to = orders.aggregate(total_sum=Sum('total_price'))['total_sum']
+    return total if total else 0
